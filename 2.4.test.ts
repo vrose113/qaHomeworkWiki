@@ -45,19 +45,26 @@ describe("Employee Manager 1.2", () => {
         5. Verify the name field is the original name
         */
         await driver.findElement(bernice).click();
+        //finds bernice on the page
         await driver.wait(
             until.elementIsVisible(await driver.findElement(nameInput))
         );
+        //waits until the card is loaded to locate the name input field
         await driver.findElement(nameInput).clear();
+        //clears the name input field
         await driver.findElement(nameInput).sendKeys("Test Name");
+        //types in "test name" in the name input field
         await driver.findElement(phillip).click();
+        //clicks phillip on the page
         await driver.wait(
             until.elementTextContains(
             await driver.findElement(nameDisplay),
             "Phillip Weaver"
             )
         );
+        //verifys that philip weaver is displayed
         await driver.findElement(bernice).click();
+        //clicks bernice
         await driver.wait(
             until.elementTextContains(
             await driver.findElement(nameDisplay),
@@ -68,6 +75,7 @@ describe("Employee Manager 1.2", () => {
             await (await driver.findElement(nameInput)).getAttribute("value")
         ).toBe("Bernice Ortiz");
         });
+        //checks that bernice ortiz matches the value listed in the element name input
 
         test("A canceled change doesn't persist", async () => {
             /*
